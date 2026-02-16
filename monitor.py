@@ -28,7 +28,7 @@ TARGET_URL = os.getenv("TARGET_URL")
 TARGET_SELECTOR = os.getenv("TARGET_SELECTOR")
 EMAIL_USER = os.getenv("EMAIL_USER")
 EMAIL_PASS = os.getenv("EMAIL_PASS")
-CHECK_INTERVAL = 5 * 60  # 5 minutes in seconds
+CHECK_INTERVAL = 60 * 60  # 1 hour in seconds
 
 # ============================
 # File Path Setup
