@@ -116,7 +116,7 @@ New Content:
         print("📧 Email Alert Sent")
         
     except Exception as e:
-        print(f"❌ Failed to send email: {str(e)}")
+        print(f"Failed to send email: {str(e)}")
 
 
 # ============================
@@ -137,7 +137,7 @@ def fetch_dom_content():
     
     try:
         # Navigate to URL
-        print(f"🌐 Navigating to {TARGET_URL}")
+        print(f" Navigating to {TARGET_URL}")
         driver.get(TARGET_URL)
         
         # Wait for element to be present
@@ -152,7 +152,7 @@ def fetch_dom_content():
         return content
         
     except Exception as e:
-        print(f"❌ Error fetching DOM content: {str(e)}")
+        print(f"Error fetching DOM content: {str(e)}")
         raise
         
     finally:
@@ -167,7 +167,7 @@ def monitor():
     """Main monitoring function"""
     
     try:
-        print("🔍 Checking for updates...")
+        print(" Checking for updates...")
         
         # Fetch new content
         new_content = fetch_dom_content()
@@ -177,20 +177,20 @@ def monitor():
         previous_snapshot = load_previous_snapshot()
         
         if not previous_snapshot:
-            print("📁 No previous snapshot found. Saving initial state.")
+            print(" No previous snapshot found. Saving initial state.")
             save_snapshot(new_content, new_hash)
             return
         
         # Compare hashes
         if new_hash != previous_snapshot.get("hash"):
-            print("⚠️  Change detected!")
+            print("  Change detected!")
             save_snapshot(new_content, new_hash)
             send_email_alert(new_content)
         else:
-            print("✅ No change detected.")
+            print("No change detected.")
             
     except Exception as e:
-        print(f"❌ Error occurred: {str(e)}")
+        print(f" Error occurred: {str(e)}")
 
 
 # ============================
@@ -198,7 +198,7 @@ def monitor():
 # ============================
 
 if __name__ == "__main__":
-    print("🚀 WebGuard Monitor Started")
+    print(" WebGuard Monitor Started")
     
     # Run immediately
     monitor()
@@ -209,4 +209,4 @@ if __name__ == "__main__":
             time.sleep(CHECK_INTERVAL)
             monitor()
     except KeyboardInterrupt:
-        print("\n⛔ Monitor stopped by user")
+        print("\nMonitor stopped by user")
